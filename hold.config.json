@@ -1,0 +1,69 @@
+{
+  "_about": "Build-side settings for The Hold. Nothing here is canon. Every value either points at canon (an entry id, a field, a pattern to find inside canon text) or is plain interface labelling. The importer reads this file and resolves each pointer against the snapshot; a pointer that no longer resolves is reported as a warning and left off the page.",
+
+  "scenes": {
+    "_about": "Which Decision log stages are scenes. Stages with no recorded scene in canon/scenes.md are shown as missing.",
+    "stages": [
+      { "pattern": "^Phase 1A$", "id": "arrival", "label": "Arrival" },
+      { "pattern": "^Dive (\\d+)", "id": "dive-$1", "label": "Dive $1" }
+    ]
+  },
+
+  "tally": {
+    "_about": "Figures on the front page. Each is read out of a canon field with a pattern; capture group 1 is the figure.",
+    "figures": [
+      { "key": "years", "entry": "HIST-0004", "field": "summary", "pattern": "for (\\d+) years", "label": "years held" },
+      { "key": "keepers", "entry": "ORG-0001", "field": "summary", "pattern": "all (\\w+) keepers", "label": "keepers" }
+    ],
+    "rails": { "entry": "POL-0001", "field": "summary", "sentence": 1, "split": ";", "expect": 3 },
+    "unresolved": { "entry": "PREM-0004", "field": "rules_and_limits", "sentences": [0, 1] },
+    "hold": { "entry": "HIST-0004" }
+  },
+
+  "linking": {
+    "_about": "How scene text is linked to entries. Entry titles and Cast names are matched automatically. Aliases cover words the Narrator uses for a thing whose entry has a different title. Each alias is a build decision, logged in BUILD_LOG.md.",
+    "caseSensitive": ["Hold", "Correction", "Telling", "Standard", "Unread", "Gloss"],
+    "maxTitleWords": 3,
+    "aliases": {
+      "throat": "TECH-0001",
+      "ledger": "SOC-0011",
+      "pledge": "POL-0004",
+      "pledged": "POL-0004",
+      "strip": "SOC-0003",
+      "strips": "SOC-0003",
+      "bowl": "TECH-0007",
+      "glossed": "TECH-0005",
+      "Glossmakers": "POL-0003",
+      "remade": "TECH-0004",
+      "remakeable": "TECH-0004",
+      "smooth": "TECH-0003",
+      "smooths": "TECH-0003",
+      "smoothed": "TECH-0003",
+      "smoothing": "TECH-0003",
+      "key": "TECH-0002",
+      "keys": "TECH-0002",
+      "shutters": "SOC-0013",
+      "refusal": "POL-0002",
+      "candidates": "SOC-0001",
+      "the Before": "MYST-0003",
+      "Standard": "HIST-0002",
+      "Unread": "PLACE-0001"
+    }
+  },
+
+  "uncertainty": {
+    "_about": "Passages that rest on something no one in-world can check get a mark. Patterns are matched against scene paragraphs and entry fields; 'source' is quoted beside the mark's legend.",
+    "unverifiable": {
+      "patterns": [
+        "unverifiable",
+        "cannot be checked",
+        "no (read mind|one|neutral party) can (verify|check|compare)",
+        "no read person can check",
+        "I can check nothing",
+        "\\bPell(['’]s)? (read|reading|readings)\\b",
+        "Nine slept\\. Nine woke\\. Nine opened\\."
+      ],
+      "source": { "entry": "HIST-0005", "field": "rules_and_limits", "sentence": 1 }
+    }
+  }
+}

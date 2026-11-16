@@ -1,0 +1,9 @@
+{
+  "doc": "https://claude.ai/artifact/C4GvP7uPuemA1AQ29bPkKf",
+  "taken": "2026-11-16",
+  "method": "Markdown export of each tab through the docs connector; no text retyped",
+  "files": {
+    "source.md": { "tab": "Canon", "rev": 37, "note": "Byline line removed (it carried the author's name). Nothing else changed." },
+    "scenes.md": { "tab": "Scenes", "rev": 4, "note": "Verbatim export, 13253 bytes, cross-checked word for word against a PDF export of the same tab." }
+  }
+}
