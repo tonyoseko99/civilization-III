@@ -13,6 +13,7 @@ Canon problems are not fixed here; they are listed at the end for the next dive 
 | 2026-11-16 | 4. Tally and map | Done. Front page and graph render from `data/` alone. No canon text, id or number appears in `src/` |
 | 2026-11-16 | 5. Polish and review | Done. axe passes on ten page kinds, light and dark, desktop and phone; keyboard paths tested. Stopped for author review |
 | 2026-11-16 | Canon refresh | Done. Snapshot: Canon tab rev 39, Scenes tab rev 15. New or revised since rev 37 / rev 4: 0 entries (still 58), 0 characters, 8 scenes newly recorded (Arrival and dives 1 to 7), so all 11 scenes are recorded. 2 new Decision log rows: "Author rulings on the roadmap" and "Roadmap approved" |
+| 2026-11-16 | Deployed | Live on GitHub Pages from `main`. The author made the repo public, set `main` as default, enabled Pages, and added `main` to the `github-pages` environment after the first deploy was blocked by its branch rule. He checked the front page, a deep link on reload, and dark mode on a phone |
 
 ## Decisions
 
@@ -45,6 +46,7 @@ Canon problems are not fixed here; they are listed at the end for the next dive 
 | 2026-11-16 | Removed "Gloss" from the case-sensitive link terms, so the Narrator's lowercase "gloss" links to TECH-0005. Added two unverifiable patterns for dive 7 ("I cannot check any of it", "Pell found a line") | Each pattern is another judgement about what counts as unverifiable. Lowercase "gloss" may sometimes be a verb, not the technology |
 | 2026-11-16 | The first plain "rail" in the Arrival and dive 5 is a physical rail at the relay. It is linked to POL-0001 (The Rails) by the automatic title match | That is an interpretation, part of the alias weakness already logged above |
 | 2026-11-16 | Added a GitHub Pages workflow (`.github/workflows/pages.yml`) after the author approved public hosting. It runs on push to `main` or by hand, runs the unit tests and the build, and deploys `dist/`. Playwright is not run there | Assumes GitHub Pages is the host he wants, since he said only "public" |
+| 2026-11-16 | Build work lands on the session branch and reaches `main` only by a deliberate merge, because `main` publishes | The public site lags canon until a build session refreshes the snapshot and merges |
 
 ## Canon notes for the next dive run
 
@@ -65,7 +67,7 @@ Nothing below was changed in the snapshot.
 
 | Decision | Options | Recommendation |
 | --- | --- | --- |
-| Hosting | Approved public (author, 2026-11-16) | GitHub Pages workflow ready. Needs the two owner steps in the README: make `main` the default branch and merge this branch, then set Pages Source to "GitHub Actions" |
+| Hosting | Approved public (author, 2026-11-16) | Done. Live at https://tonyoseko99.github.io/civilization-III/ since 2026-11-16. Every push to `main` redeploys |
 | Public or private | A public site publishes the canon text | Decided: public. Pages on a private repository needs a paid plan |
 | Name | "The Hold" | Kept for now (author, 2026-11-16) |
 | Version 2 | Asking the Narrator questions needs a model API key and a per-question cost. A static site cannot hold a key, so it also needs a small server or function | Per the Roadmap, it starts only after the canon review after dive 15 |
