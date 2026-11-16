@@ -57,7 +57,12 @@ canon doc ──export──▶ canon/source.md   (Canon tab)
 
 - `canon/` is a verbatim Markdown export of two tabs. Never edit it by hand and never retype
   canon. To refresh it, export the Canon and Scenes tabs as Markdown and replace the files
-  (drop the byline line under the Canon title; it carries a personal name).
+  (drop the byline line under the Canon title; it carries a personal name). Record the tab
+  revisions and the method in `canon/SNAPSHOT.json`.
+- If a tab's Markdown export cannot be saved as a file (for example, it comes back inline),
+  export the same tab as HTML and convert it to Markdown mechanically, with a script. Then
+  check that the result has exactly the byte length of the Markdown export. Note the method
+  in `canon/SNAPSHOT.json`.
 - `data/` is generated and not committed.
 - The importer **fails loudly** if an entry lacks one of the ten fields, an id is duplicated,
   a link points to an id that does not exist, or the entry count differs from the count the
@@ -93,7 +98,21 @@ src/                 React app (Vite, TypeScript, hash routing)
 tests/               unit tests (Vitest)
 e2e/                 browser tests (Playwright, axe)
 BUILD_LOG.md         one dated line per build decision, with its weakest call
+.github/workflows/pages.yml   GitHub Pages deploy on push to main
 ```
 
-Not deployed anywhere. Hosting, the public name and version 2 (asking the Narrator
-questions) are the author's decisions; see the end of `BUILD_LOG.md`.
+## Hosting
+
+Public hosting was approved by the author on 2026-11-16. `.github/workflows/pages.yml`
+runs the unit tests, builds the site and deploys `dist/` to GitHub Pages on every push to
+`main` (or when started by hand). The site uses a relative base and hash routing, so it
+needs no base-path setting.
+
+The site is not deployed yet. Two steps only the repo owner can take:
+
+1. Create or choose `main` as the default branch, and merge this branch into it.
+2. In the repository's Settings → Pages, set Source to "GitHub Actions".
+
+GitHub Pages on a private repository needs a paid plan. A public site publishes the canon
+text. The public name and version 2 (asking the Narrator questions) are still the author's
+decisions; see the end of `BUILD_LOG.md`.

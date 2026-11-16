@@ -48,7 +48,8 @@ test('every scene opens; recorded ones carry the Narrator, missing ones say so',
     await page.goto(`/#/scenes/${s.id}`);
     await expect(page.locator('h1')).toContainText(s.label);
     if (s.recorded) {
-      await expect(page.locator('.narrator')).toHaveCount(1);
+      // A scene with editorial notes has several Narrator blocks, split by the notes.
+      expect(await page.locator('.narrator').count()).toBeGreaterThanOrEqual(1);
       // The two voices never share a block.
       await expect(page.locator('.narrator .architect, .architect .narrator')).toHaveCount(0);
       const hrefs = await page.locator('.narrator a').evaluateAll((as) => as.map((a) => a.getAttribute('href')!));

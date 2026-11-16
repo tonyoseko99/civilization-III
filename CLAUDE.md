@@ -3,7 +3,7 @@
 The Hold is a static web app that displays the canon of Project Civilization III.
 The canon of record is the doc at https://claude.ai/artifact/C4GvP7uPuemA1AQ29bPkKf.
 Its **Build brief** tab governs this repo. Read it in full before building; this file
-restates its section 1 and the working rules that follow from it.
+restates its sections 1 and 6 and the working rules that follow from them.
 
 ## Authority
 
@@ -23,16 +23,29 @@ or a public release.
 | Use anything known about the author personally | Author's rule |
 | Publish, deploy publicly, or spend money without the author | Those are his to approve |
 
+## Keeping up with canon
+
+The canon grows by one dive a day until dive 15. A build session does not learn of new
+canon by itself: it sees only the snapshot in the repo. So:
+
+- **At the start of every build session, before any other work:** re-read the Canon and
+  Scenes tabs and refresh the snapshot in `canon/` from them (export of each tab, never
+  retyped by hand; see the README), then re-run `npm run import-canon`.
+- **List what changed.** In `BUILD_LOG.md`, list which entries, characters, and scenes are
+  new or revised since the last snapshot.
+- **No code change for new canon.** The app must need no code change when entries,
+  characters, or scenes are added.
+- **Do not fix canon.** If canon looks inconsistent, do not fix it in the snapshot: note
+  it in `BUILD_LOG.md` under "Canon notes for the next dive run".
+
 ## Working rules
 
-- **Start of every session:** refresh the snapshot in `canon/` from the doc (Markdown
-  export of the Canon and Scenes tabs; never retype canon by hand), then run
-  `npm run import-canon`. If canon looks inconsistent, do not fix it in the snapshot:
-  note it in `BUILD_LOG.md` under "Canon notes for the next dive run".
+- **Order of work.** The doc's Roadmap tab orders the work: The Hold v1, then a canon
+  review after dive 15, then Ask the Narrator, the story cycle, the keeper game. Nothing
+  in its stages 3 to 5 starts before that review.
 - **No canon in components.** `src/` reads only the JSON in `data/`. Pointers into canon
   (which entry feeds which front-page figure, which words link where) live in
-  `hold.config.json`. The app must need no code change when entries, characters, or
-  scenes are added.
+  `hold.config.json`.
 - **Two voices, never blended.** Narrator text and Architect text use different
   components (`Narrator`, `Architect`) and never share a block. Prefer quoting canon to
   writing new in-world copy. Interface copy is Architect voice: plain and analytical.

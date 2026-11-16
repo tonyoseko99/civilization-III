@@ -22,6 +22,7 @@ export function Rich({ segs }: { segs: Segment[] }) {
             </Link>
           );
         }
+        if (s.i) node = <em>{node}</em>;
         return s.b ? <strong key={i}>{node}</strong> : <span key={i}>{node}</span>;
       })}
     </>
@@ -32,9 +33,18 @@ export function Rich({ segs }: { segs: Segment[] }) {
  * The Narrator's voice. Only text taken verbatim from a recorded scene goes in here.
  * Nothing in the Architect's voice may be placed inside this block.
  */
-export function Narrator({ children, label = 'Narrator' }: { children: ReactNode; label?: string }) {
+export function Narrator({
+  children,
+  label = 'Narrator',
+  ariaLabel = label,
+}: {
+  children: ReactNode;
+  label?: string;
+  /** Distinguishes the landmarks when one scene has several Narrator blocks. */
+  ariaLabel?: string;
+}) {
   return (
-    <section className="voice narrator" aria-label={label}>
+    <section className="voice narrator" aria-label={ariaLabel}>
       <p className="voice-tag" aria-hidden="true">
         {label}
       </p>

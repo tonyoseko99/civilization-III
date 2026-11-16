@@ -834,6 +834,8 @@ Every stage so far, newest first. Dive 10 on 2026-11-16; all earlier stages on 2
 
 | Stage | What changed | Decided by |
 | --- | --- | --- |
+| Author rulings on the roadmap | Claude drafts story prose for the author's revision, replacing the original rule that the author writes it. The Arrival and dives 1 to 7 scenes are to be copied into the Scenes tab word for word; not yet done, because only the original chat holds them. Build sessions must refresh canon at every start (2026-11-16) | Author |
+| Roadmap approved | Added the Roadmap tab: The Hold, then review after dive 15, then Ask the Narrator, the story cycle (flagship), and the keeper game. No canon entries changed (2026-11-16) | Claude proposed; author approved |
 | Build brief added | Added the Build brief tab for a Claude Code session: The Hold, a static web app that displays canon and never changes it. Dive runs still write no code. No canon entries changed (2026-11-16) | Author requested; Claude decided |
 | Dive 10: The Hum | Added PHYS-0002 (the eleven-waking lag), TECH-0007 (listening bowls), SOC-0013 (shuttering), POL-0006 (the first voice), CHAR-0003 (Imre). Revised MYST-0009, partly answered: the Hum's loudness follows the region's summed heat eleven wakings late; whether it is a mind or a dust echo stays open. The far house answered by shuttering, without asking any rail. Named Imre. No checkpoint due | Claude |
 | Dive 9: Orrin's Handing | Added HIST-0006 (the Handing), POL-0005 (the keeper's sleep), CHAR-0002 (Ione), MYST-0010 (what the keepers lose at night). Revised HIST-0005 and MYST-0003 (Pell's throat-wall reading) and ORG-0001 (keepers sleep read; Ione sleeps glossed). Named Ione, Asha, Hesk. Orrin died once. Story checkpoint 1 written | Claude |

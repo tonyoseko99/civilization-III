@@ -49,7 +49,7 @@ describe('link resolution in the real snapshot', () => {
   it('links every Cast name a recorded scene mentions', () => {
     for (const s of out.scenes.scenes.filter((x) => x.recorded)) {
       const narr = s.sections.filter((x) => x.voice === 'narrator');
-      const text = narr.flatMap((x) => x.blocks.flatMap((b) => b.items.map((i) => i.map((g) => g.t).join('')))).join('\n');
+      const text = narr.flatMap((x) => x.blocks.filter((b) => !b.note).flatMap((b) => b.items.map((i) => i.map((g) => g.t).join('')))).join('\n');
       const linked = new Set(narr.flatMap((x) => x.blocks.flatMap((b) => b.items.flat())).flatMap((g) => g.cast ?? g.ref ?? []));
       for (const r of out.cast.rows) {
         const bare = r.name.replace(/^The /, '');

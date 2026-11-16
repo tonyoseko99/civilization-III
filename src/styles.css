@@ -190,6 +190,7 @@ button { font: inherit; color: inherit; }
 }
 .dagger { color: var(--color-accent); font-weight: 600; }
 .scene .voice + .voice, .scene div + .voice, .scene .voice + div, .scene div > .voice + .voice { margin-top: 1.25rem; }
+.narrator em { font-style: italic; }
 @media (min-width: 46rem) {
   .narrator { padding: 1.6rem 2rem 2rem 2.1rem; }
   .narrator .voice-body { font-size: 1.3rem; }

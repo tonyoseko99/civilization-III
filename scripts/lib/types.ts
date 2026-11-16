@@ -4,6 +4,7 @@ export interface Segment {
   ref?: string;
   cast?: string;
   b?: boolean;
+  i?: boolean;
 }
 
 export const FIELDS = [
@@ -120,6 +121,8 @@ export interface Block {
   kind: 'p' | 'ul' | 'ol';
   /** One item for a paragraph, one per bullet for a list. */
   items: Segment[][];
+  /** An editorial note set inside a scene, in square brackets. Always the Architect's voice. */
+  note?: boolean;
   /** Per item: true when it matches an uncertainty pattern. */
   unverifiable?: boolean[];
 }
@@ -176,7 +179,7 @@ export interface Tally {
 }
 
 export interface Config {
-  scenes: { stages: { pattern: string; id: string; label: string }[] };
+  scenes: { ignoreHeadings?: string[]; stages: { pattern: string; id: string; label: string }[] };
   tally: {
     figures: { key: string; entry: string; field: string; pattern: string; label: string }[];
     rails?: { entry: string; field: string; sentence: number; split: string; expect: number };

@@ -1,7 +1,26 @@
 import { Link, useParams } from 'react-router-dom';
 import { Architect, Blocks, EntryLink, Mark, Narrator, PageHead, Rich } from '../components/voice';
-import { castBySlug, decisions, meta, sceneById, scenes, scenesIntro } from '../data';
+import { castBySlug, decisions, meta, sceneById, scenes, scenesIntro, type Block } from '../data';
 import { NotFound } from './NotFound';
+import { sceneName } from './ScenesPage';
+
+/** Split a Narrator section so that editorial notes sit in their own Architect blocks. */
+function runs(blocks: Block[]): { note: boolean; blocks: Block[] }[] {
+  const out: { note: boolean; blocks: Block[] }[] = [];
+  for (const b of blocks) {
+    const last = out[out.length - 1];
+    if (last && last.note === !!b.note) last.blocks.push(b);
+    else out.push({ note: !!b.note, blocks: [b] });
+  }
+  return out;
+}
+
+/** "Narrator" when the section is one block; "Narrator, part 2 of 3" when notes split it. */
+function narratorLabel(all: { note: boolean }[], j: number): string {
+  const parts = all.filter((r) => !r.note).length;
+  if (parts < 2) return 'Narrator';
+  return `Narrator, part ${all.slice(0, j + 1).filter((r) => !r.note).length} of ${parts}`;
+}
 
 export function ScenePage() {
   const { id = '' } = useParams();
@@ -11,11 +30,11 @@ export function ScenePage() {
   const next = scenes[scene.order + 1];
   const hasUnverifiable = scene.sections.some((s) => s.blocks.some((b) => b.unverifiable?.some(Boolean)));
   const legendId = `legend-${scene.id}`;
-  const name = scene.title.replace(/^[^:]+:\s*/, '');
+  const name = sceneName(scene.title, scene.label);
 
   return (
     <article className="page scene">
-      <PageHead kicker={<Link to="/scenes">Scenes</Link>} title={<><span className="scene-label">{scene.label}</span> {name !== scene.label && name}</>}>
+      <PageHead kicker={<Link to="/scenes">Scenes</Link>} title={<><span className="scene-label">{scene.label}</span> {name}</>}>
         {!scene.recorded && (
           <p>
             <Mark kind="missing" />
@@ -37,10 +56,22 @@ export function ScenePage() {
 
       {scene.sections.map((sec, i) =>
         sec.voice === 'narrator' ? (
-          <div key={i}>
-            <Narrator>
-              <Blocks blocks={sec.blocks} legendId={legendId} />
-            </Narrator>
+          <div key={i} className="narrator-run">
+            {runs(sec.blocks).map((run, j, all) =>
+              run.note ? (
+                <Architect key={j} label="Architect · note on this scene">
+                  {run.blocks.map((b, k) => (
+                    <p key={k}>
+                      <Rich segs={b.items[0]} />
+                    </p>
+                  ))}
+                </Architect>
+              ) : (
+                <Narrator key={j} ariaLabel={narratorLabel(all, j)}>
+                  <Blocks blocks={run.blocks} legendId={legendId} />
+                </Narrator>
+              ),
+            )}
             {hasUnverifiable && (
               <Architect label="Architect · reading note" id={legendId}>
                 <p>

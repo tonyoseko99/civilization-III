@@ -15,7 +15,7 @@ import {
   type Tally,
 } from './types.js';
 import { assertValid, parseCanon, parseScenes, type Chunk, type Table } from './parse.js';
-import { buildLexicon, linkIds, linkTerms, mapText, sentences, slug, splitBold } from './link.js';
+import { buildLexicon, editorialNote, linkIds, linkTerms, mapText, sentences, slug, splitBold } from './link.js';
 
 export interface Output {
   entries: Entry[];
@@ -157,8 +157,10 @@ export function build(canonMd: string, scenesMd: string, config: Config, snapsho
   const rawScenes = parseScenes(scenesMd);
   const sceneRefs = new Map<string, Set<string>>();
   const recorded = new Map<string, Scene>();
+  const ignore = (config.scenes.ignoreHeadings ?? []).map((p) => new RegExp(p));
   for (const rs of rawScenes.scenes) {
     const k = sceneKey(rs.heading);
+    if (!k && ignore.some((r) => r.test(rs.heading))) continue;
     if (!k) {
       warn(`Scenes tab heading "${rs.heading}" matches no scene stage in hold.config.json; skipped`);
       continue;
@@ -169,6 +171,12 @@ export function build(canonMd: string, scenesMd: string, config: Config, snapsho
     const sections = rs.sections.map((sec) => {
       const voice = /^narrator$/i.test(sec.heading) ? ('narrator' as const) : ('architect' as const);
       const blocks: Block[] = sec.blocks.map((b) => {
+        const note = b.kind === 'p' ? editorialNote(b.items[0]) : null;
+        if (note !== null) {
+          const segs = ref(note);
+          for (const s of segs) if (s.ref) refs.add(s.ref);
+          return { kind: 'p', items: [segs], note: true };
+        }
         const items = b.items.map((text) => {
           let segs: Segment[] = splitBold(text);
           segs = mapText(segs, ref);

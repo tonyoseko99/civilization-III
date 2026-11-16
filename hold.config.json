@@ -3,8 +3,9 @@
 
   "scenes": {
     "_about": "Which Decision log stages are scenes. Stages with no recorded scene in canon/scenes.md are shown as missing.",
+    "ignoreHeadings": ["^Earlier scenes"],
     "stages": [
-      { "pattern": "^Phase 1A$", "id": "arrival", "label": "Arrival" },
+      { "pattern": "^(Phase 1A$|Arrival\\b)", "id": "arrival", "label": "Arrival" },
       { "pattern": "^Dive (\\d+)", "id": "dive-$1", "label": "Dive $1" }
     ]
   },
@@ -22,7 +23,7 @@
 
   "linking": {
     "_about": "How scene text is linked to entries. Entry titles and Cast names are matched automatically. Aliases cover words the Narrator uses for a thing whose entry has a different title. Each alias is a build decision, logged in BUILD_LOG.md.",
-    "caseSensitive": ["Hold", "Correction", "Telling", "Standard", "Unread", "Gloss"],
+    "caseSensitive": ["Hold", "Correction", "Telling", "Standard", "Unread"],
     "maxTitleWords": 3,
     "aliases": {
       "throat": "TECH-0001",
@@ -60,6 +61,8 @@
         "no (read mind|one|neutral party) can (verify|check|compare)",
         "no read person can check",
         "I can check nothing",
+        "I cannot check any of it",
+        "Pell found a line",
         "\\bPell(['’]s)? (read|reading|readings)\\b",
         "Nine slept\\. Nine woke\\. Nine opened\\."
       ],

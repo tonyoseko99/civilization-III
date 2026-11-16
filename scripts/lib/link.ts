@@ -123,22 +123,28 @@ function matchesCase(found: string, term: string): boolean {
   return found === term || found === term[0].toUpperCase() + term.slice(1);
 }
 
-/** Split Markdown bold into segments; everything else is left as text. */
+/** Split Markdown bold and italic into segments; everything else is left as text. */
 export function splitBold(text: string): Segment[] {
   const out: Segment[] = [];
   let at = 0;
-  for (const m of text.matchAll(/\*\*(.+?)\*\*/g)) {
+  for (const m of text.matchAll(/\*\*(.+?)\*\*|(?<!\*)\*(?!\*)(.+?)(?<!\*)\*(?!\*)/g)) {
     if (m.index > at) out.push({ t: text.slice(at, m.index) });
-    out.push({ t: m[1], b: true });
+    out.push(m[1] !== undefined ? { t: m[1], b: true } : { t: m[2], i: true });
     at = m.index + m[0].length;
   }
   if (at < text.length) out.push({ t: text.slice(at) });
   return out;
 }
 
+/** "*[Correction 1 applied ...]*": a whole paragraph in italic square brackets is an editorial note. */
+export function editorialNote(text: string): string | null {
+  const m = /^\*\[(.*)\]\*$/s.exec(text.trim());
+  return m ? m[1] : null;
+}
+
 export function mapText(segs: Segment[], fn: (t: string) => Segment[]): Segment[] {
   return segs.flatMap((s) =>
-    s.ref || s.cast ? [s] : fn(s.t).map((n) => (s.b ? { ...n, b: true } : n)),
+    s.ref || s.cast ? [s] : fn(s.t).map((n) => ({ ...n, ...(s.b ? { b: true } : {}), ...(s.i ? { i: true } : {}) })),
   );
 }
 

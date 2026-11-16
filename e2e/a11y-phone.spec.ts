@@ -4,11 +4,13 @@ import { entries, scenes } from './data';
 
 const recorded = scenes.filter((s) => s.recorded);
 const missing = scenes.filter((s) => !s.recorded);
+const withNotes = recorded.find((s) => s.sections.some((x) => x.blocks.some((b) => b.note)));
 const open = entries.find((e) => e.status === 'open') ?? entries[0];
 const PAGES = [
   '/',
   '/scenes',
   ...(recorded.length ? [`/scenes/${recorded[recorded.length - 1].id}`] : []),
+  ...(withNotes ? [`/scenes/${withNotes.id}`] : []),
   ...(missing.length ? [`/scenes/${missing[0].id}`] : []),
   '/entries',
   `/entries/${open.id}`,

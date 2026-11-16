@@ -77,13 +77,14 @@ describe('the real snapshot', () => {
   it('keeps scene text verbatim', () => {
     const raw = parseScenes(scenes);
     const recorded = out.scenes.scenes.filter((s) => s.recorded);
-    expect(recorded.length).toBe(raw.scenes.length);
+    const ignored = (config.scenes.ignoreHeadings ?? []).map((p) => new RegExp(p));
+    expect(recorded.length).toBe(raw.scenes.filter((r) => !ignored.some((x) => x.test(r.heading))).length);
     for (const s of recorded) {
       for (const sec of s.sections) {
         for (const b of sec.blocks) {
           for (const item of b.items) {
-            const text = item.map((x) => (x.b ? `**${x.t}**` : x.t)).join('');
-            expect(scenes).toContain(text);
+            const inner = item.map((x) => (x.b ? `**${x.t}**` : x.i ? `*${x.t}*` : x.t)).join('');
+            expect(unescapeMd(scenes)).toContain(b.note ? `*[${inner}]*` : inner);
           }
         }
       }
@@ -91,13 +92,20 @@ describe('the real snapshot', () => {
   });
 
   it('lists unrecorded scenes as missing, with no text', () => {
-    const missing = out.scenes.scenes.filter((s) => !s.recorded);
-    expect(missing.length).toBeGreaterThan(0);
+    const partial = build(canon, scenes.split('\n## ').slice(0, 3).join('\n## '), config);
+    const missing = partial.scenes.scenes.filter((s) => !s.recorded);
+    expect(missing.length).toBe(out.scenes.scenes.length - 2);
     for (const s of missing) {
       expect(s.sections).toEqual([]);
       expect(s.stage).not.toBeNull();
     }
     expect(out.scenes.scenes.map((s) => s.order)).toEqual(out.scenes.scenes.map((_, i) => i));
+  });
+
+  it('keeps editorial notes out of the Narrator voice', () => {
+    const notes = out.scenes.scenes.flatMap((s) => s.sections.flatMap((x) => x.blocks.filter((b) => b.note)));
+    expect(notes.length).toBe((unescapeMd(scenes).match(/^\*\[.*\]\*$/gm) ?? []).length);
+    for (const n of notes) for (const g of n.items[0]) expect(g.cast).toBeUndefined();
   });
 
   it('marks only the Narrator section as narrator voice', () => {
