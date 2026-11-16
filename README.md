@@ -23,6 +23,7 @@ Then open <http://localhost:5173>. `dev`, `build` and `test` each re-run the imp
 
 | Command | What it does |
 | --- | --- |
+| `npm run refresh-snapshot -- --canon <file> --scenes <file>` | Refreshes `canon/` from saved tab exports and reports what changed |
 | `npm run import-canon` | Parses `canon/` into `data/`. Exits non-zero on a bad snapshot |
 | `npm run dev` | Local preview with reload |
 | `npm run build` | Type-checks and builds the static site into `dist/` |
@@ -56,13 +57,23 @@ canon doc ──export──▶ canon/source.md   (Canon tab)
 ```
 
 - `canon/` is a verbatim Markdown export of two tabs. Never edit it by hand and never retype
-  canon. To refresh it, export the Canon and Scenes tabs as Markdown and replace the files
-  (drop the byline line under the Canon title; it carries a personal name). Record the tab
-  revisions and the method in `canon/SNAPSHOT.json`.
+  canon. To refresh it, export the Canon and Scenes tabs through the docs connector, then
+  pass the saved export results to the script:
+
+  ```bash
+  npm run refresh-snapshot -- --canon <export file> --scenes <export file> [--date YYYY-MM-DD]
+  ```
+
+  It decodes each export and checks its byte length, drops the byline line under the Canon
+  title (it carries a personal name), validates the Canon text with the importer's checks,
+  and only then writes `canon/source.md`, `canon/scenes.md` and `canon/SNAPSHOT.json`. It
+  prints what changed (entries, Cast rows, scenes, Decision log rows), with a row to paste
+  into `BUILD_LOG.md`, or `No canon changes since the last snapshot.` and writes nothing.
 - If a tab's Markdown export cannot be saved as a file (for example, it comes back inline),
-  export the same tab as HTML and convert it to Markdown mechanically, with a script. Then
-  check that the result has exactly the byte length of the Markdown export. Note the method
-  in `canon/SNAPSHOT.json`.
+  export the same tab as HTML instead; the script converts it to Markdown mechanically. Pass
+  the byte length the Markdown export reported (`--scenes-md-bytes N`, or `--canon-md-bytes
+  N`) and the script checks the converted text has exactly that length. The converter knows
+  only the HTML the doc uses today and stops on anything else.
 - `data/` is generated and not committed.
 - The importer **fails loudly** if an entry lacks one of the ten fields, an id is duplicated,
   a link points to an id that does not exist, or the entry count differs from the count the
@@ -93,6 +104,7 @@ canon doc ──export──▶ canon/source.md   (Canon tab)
 ```
 canon/               snapshot of the doc (source of truth for the build)
 scripts/import-canon.ts, scripts/lib/   parser, validator, linker, builder
+scripts/refresh-snapshot.ts             export files -> canon/, with a change report
 hold.config.json     pointers into canon and linking rules
 src/                 React app (Vite, TypeScript, hash routing)
 tests/               unit tests (Vitest)

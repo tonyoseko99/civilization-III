@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "import-canon": "tsx scripts/import-canon.ts",
+    "refresh-snapshot": "tsx scripts/refresh-snapshot.ts",
     "predev": "npm run import-canon",
     "dev": "vite",
     "prebuild": "npm run import-canon",

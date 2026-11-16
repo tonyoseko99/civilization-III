@@ -30,7 +30,8 @@ canon by itself: it sees only the snapshot in the repo. So:
 
 - **At the start of every build session, before any other work:** re-read the Canon and
   Scenes tabs and refresh the snapshot in `canon/` from them (export of each tab, never
-  retyped by hand; see the README), then re-run `npm run import-canon`.
+  retyped by hand) with `npm run refresh-snapshot -- --canon <export file> --scenes <export
+  file>` (see the README), then re-run `npm run import-canon`.
 - **List what changed.** In `BUILD_LOG.md`, list which entries, characters, and scenes are
   new or revised since the last snapshot.
 - **No code change for new canon.** The app must need no code change when entries,
@@ -59,6 +60,7 @@ canon by itself: it sees only the snapshot in the repo. So:
 ## Commands
 
 ```bash
+npm run refresh-snapshot -- --canon <file> --scenes <file>   # saved exports -> canon/
 npm run import-canon   # canon/ -> data/, fails loudly on a bad snapshot
 npm run dev            # local preview
 npm test               # importer and link-resolution unit tests

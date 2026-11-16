@@ -47,6 +47,7 @@ Canon problems are not fixed here; they are listed at the end for the next dive 
 | 2026-11-16 | The first plain "rail" in the Arrival and dive 5 is a physical rail at the relay. It is linked to POL-0001 (The Rails) by the automatic title match | That is an interpretation, part of the alias weakness already logged above |
 | 2026-11-16 | Added a GitHub Pages workflow (`.github/workflows/pages.yml`) after the author approved public hosting. It runs on push to `main` or by hand, runs the unit tests and the build, and deploys `dist/`. Playwright is not run there | Assumes GitHub Pages is the host he wants, since he said only "public" |
 | 2026-11-16 | Build work lands on the session branch and reaches `main` only by a deliberate merge, because `main` publishes | The public site lags canon until a build session refreshes the snapshot and merges |
+| 2026-11-16 | The snapshot refresh is now a script (`npm run refresh-snapshot`): it decodes the saved exports and checks their byte length, converts an HTML export to Markdown when needed, strips the byline under the Canon title, validates the Canon text with the importer's checks before writing anything, and reports what changed | It supports only the HTML constructs the doc uses today and fails on anything else, so a new kind of block in the Scenes tab will stop the refresh until the converter is extended |
 
 ## Canon notes for the next dive run
 
