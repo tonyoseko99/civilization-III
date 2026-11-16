@@ -23,6 +23,7 @@
     "react-router-dom": "^7.18.5"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.14.0",
     "@playwright/test": "^1.63.0",
     "@types/node": "^26.6.6",
     "@types/react": "^19.3.0",
