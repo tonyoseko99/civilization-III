@@ -1,9 +1,9 @@
 {
   "doc": "https://claude.ai/artifact/C4GvP7uPuemA1AQ29bPkKf",
-  "taken": "2026-11-16",
+  "taken": "2026-11-17",
   "method": "Export of each tab through the docs connector; no text retyped",
   "files": {
-    "source.md": { "tab": "Canon", "rev": 39, "note": "Markdown export. Byline line removed (it carried the author's name). Nothing else changed." },
-    "scenes.md": { "tab": "Scenes", "rev": 15, "note": "The Markdown export came back inline rather than as a file, so this file was produced by converting an HTML export of the same tab to Markdown with a script. Checked: byte length equals the Markdown export (36,582 bytes), and the first 13,252 bytes are identical to the previously verified snapshot (rev 4)." }
+    "source.md": { "tab": "Canon", "rev": 50, "note": "Markdown export (98,822 bytes), decoded by scripts/refresh-snapshot.ts. Byline line removed (it carried the author's name). Nothing else changed." },
+    "scenes.md": { "tab": "Scenes", "rev": 16, "note": "HTML export (44,583 bytes), converted to Markdown (41,316 bytes) by scripts/refresh-snapshot.ts. Nothing else changed." }
   }
 }

@@ -2,6 +2,53 @@
 
 Narrator scenes, weakest calls, and story checkpoints, newest first. Dives 1A to 7 live in the original chat; from dive 8 on, every scene is recorded here.
 
+## Dive 11: The relay engineers
+
+### Narrator
+
+Halde struck the housing twice with the flat of her hand, the way you wake a friend. Then she nodded to Sef, and Sef turned the wheel.
+
+Nothing came down the road. Nothing has, for a long time. What went into the gate came from a sealed store in the floor of the housing, a pattern the wrights have never seen and call the blind. It went in from the solward side, as though the parent had sent it. We waited.
+
+The gate rang once: a low note, felt more through the feet than heard. Refused.
+
+Halde took a scraper from her belt and cut one short stroke into the housing below the last. The strokes run in rows up the casing, over the lip, and out of sight. One every thousand wakings since the Standard came. They are all the same length. None is missing.
+
+You asked what a relay engineer is. In your time, I think, a person was given something for keeping a machine running, and went home. Nobody here is given anything for it; nothing could be given that would cross the house's wall. The gate is held in custody, like a strip box or a wall, and the wrights are its custodians. They sleep in the throat house, read like anyone, and are remade like anyone. Halde has died four times at the throat. She has not missed a test.
+
+She asked me to come because the craft wants one witness from outside it. For 160,000 years that was a keeper. Since the Hold, keepers come with walkers, and walkers carry what they see to their rail. I carry it only to you.
+
+"You will tell it plainly," she said, "and get it wrong. That suits the gate."
+
+So, plainly. The gate decides what the road may put into us. It refused the blind today, as it has every thousand wakings. Three hundred and four years ago it did not refuse the retraction. It let it through the way it lets far-works through, because the retraction asks and does nothing. Halde was an apprentice then. She stood where Sef stood.
+
+You asked whether the wrights know something the keepers do not. I asked her. She said the gate is the wrights' to keep, not to talk about, and that this was the rule before anyone had anything to say.
+
+Sef walked me out. He is thirty-one and was fostered in a Glossmaker household, and he does not look at the housing the way Halde does. At the door he said, not to me, "If they knew, they'd stop arguing about the marks."
+
+Halde was behind us. "If they knew," she said, "they'd stop arguing."
+
+I have turned those two sentences over for six wakings. I think they are about the retraction. Only Sol could have given it teeth, and Sol chose not to. That is what most of us believe, and what I believe. Perhaps the wrights hold some proof of Sol's marks that would end the forgery quarrel. Perhaps they hold proof against them.
+
+But Halde did not look like someone holding a proof. She looked like someone holding a door shut, and I could not tell which side she was afraid of.
+
+The note stays in the housing if you lay your hand there. It fades over a waking. Sef keeps his hand on it until it is gone.
+
+### Changelog
+
+- ORG-0002 The Throat-wrights: added
+- TECH-0008 The Refusal Test: added
+- SOC-0014 The Wright's Silence: added
+- CHAR-0004 Halde: added
+- MYST-0011 What Is in the Blind?: added (open)
+- TECH-0006 The Admission Rule: revised (who knows it; the gate fails closed; release only asks each child relay while the Gloss would install in every child it reached)
+- MYST-0001 Is the Retraction Authentic?: revised (names who keeps quiet; not answered)
+- Contradiction check: TECH-0001 says a relay accepts traffic only from its parent; the test feeds the blind into the gate's solward side from inside the housing, so no second inward path exists. TECH-0006 says no relay can disable the rule; a gate that fails closed keeps that true as gates decay. The Narrator's belief that only Sol could give teeth is kept: it witnessed the test and did not understand it. No mystery was answered; one was opened. Added a known in-world error: release and the Gloss are the same kind of act.
+
+### Weakest call
+
+The blind. A sealed pattern from Sol that the craft says would undo the Standard risks becoming a button every story chases, and it edges toward saying what Sol meant from the start, which MYST-0001 and MYST-0002 keep open. It is kept because canon gives it no door (the gate fails closed and is the only known way into a house's Correction), its content stays open (MYST-0011), and the refusal test gives the Admission Rule a physical form someone can witness; a silence about pure logic would have nothing to show. A second risk is that so few know the rule after 160,000 years. It is kept because the craft's silence is older than the Hold, and before the retraction nobody had a reason to ask.
+
 ## Dive 10: The Hum
 
 ### Narrator

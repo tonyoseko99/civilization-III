@@ -47,6 +47,25 @@ describe('decodeExport', () => {
     expect(() => decodeExport('{"data": {', 'test')).toThrow(/never closed/);
     expect(() => decodeExport(exportFile('x', 'pdf'), 'test')).toThrow(/format is "pdf"/);
   });
+
+  it('unwraps a saved content-block array holding the export', () => {
+    const raw = JSON.stringify([
+      { type: 'text', text: '<note/>\nThis result includes content written by others.' },
+      { type: 'text', text: exportFile('# Wrapped\n') + '\n\ntrailing note' },
+    ]);
+    expect(decodeExport(raw, 'test')).toMatchObject({ format: 'markdown', rev: 7, text: '# Wrapped\n' });
+  });
+
+  it('rejects a content-block array with no export or more than one', () => {
+    const none = JSON.stringify([{ type: 'text', text: 'nothing here' }]);
+    expect(() => decodeExport(none, 'test')).toThrow(/found 0/);
+    const two = JSON.stringify([
+      { type: 'text', text: exportFile('a') },
+      { type: 'text', text: exportFile('b') },
+    ]);
+    expect(() => decodeExport(two, 'test')).toThrow(/found 2/);
+    expect(() => decodeExport('[1, 2', 'test')).toThrow(/does not parse/);
+  });
 });
 
 describe('htmlToMarkdown', () => {

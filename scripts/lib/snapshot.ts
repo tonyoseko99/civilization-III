@@ -53,6 +53,34 @@ export function firstJsonValue(raw: string): unknown {
   throw new SnapshotError('its JSON object is never closed');
 }
 
+/**
+ * Some harness versions save a tool result as a JSON array of content blocks,
+ * `[{"type":"text","text":"..."}, ...]`, where exactly one block's text is the
+ * export object. Return that block's text; return `raw` unchanged when it is not
+ * such an array.
+ */
+export function unwrapContentBlocks(raw: string): string {
+  const start = raw.search(/\S/);
+  if (start < 0 || raw[start] !== '[') return raw;
+  let blocks: unknown;
+  try {
+    blocks = JSON.parse(raw);
+  } catch (e) {
+    throw new SnapshotError(`its content-block array does not parse: ${(e as Error).message}`);
+  }
+  if (!Array.isArray(blocks)) throw new SnapshotError('does not start with a JSON object');
+  const candidates = blocks.filter(
+    (b): b is { type: string; text: string } =>
+      !!b && typeof b === 'object' && (b as { type?: unknown }).type === 'text' &&
+      typeof (b as { text?: unknown }).text === 'string' && /^\s*\{/.test((b as { text: string }).text),
+  );
+  if (candidates.length !== 1)
+    throw new SnapshotError(
+      `expected exactly one content block holding the export object, found ${candidates.length}`,
+    );
+  return candidates[0].text;
+}
+
 /** Decode the text of a saved export result. `label` names the file in error messages. */
 export function decodeExport(raw: string, label: string): DecodedExport {
   const fail = (m: string): never => {
@@ -60,7 +88,7 @@ export function decodeExport(raw: string, label: string): DecodedExport {
   };
   let obj: unknown;
   try {
-    obj = firstJsonValue(raw);
+    obj = firstJsonValue(unwrapContentBlocks(raw));
   } catch (e) {
     return fail((e as Error).message);
   }

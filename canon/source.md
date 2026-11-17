@@ -2,7 +2,7 @@
 
 ## How this file works
 
-This file is the canon of record. It overrides anything said in chat. It holds 58 entries after Phase 1B and deep dives 1–10.
+This file is the canon of record. It overrides anything said in chat. It holds 63 entries after Phase 1B and deep dives 1–11.
 
 | Rule | Current setting |
 | --- | --- |
@@ -18,7 +18,7 @@ Entry format: id, title, status, plausibility, summary, rules\_and\_limits, cons
 
 ## Cast
 
-Fifteen named characters, all in the Narrator's region. All are established.
+Seventeen named characters, all in the Narrator's region. All are established.
 
 | Name | Who | Rail or position | First seen |
 | --- | --- | --- | --- |
@@ -37,6 +37,8 @@ Fifteen named characters, all in the Narrator's region. All are established.
 | Asha | Candidate raised by the release rail; not chosen | Undeclared | Dive 9 |
 | Hesk | Candidate raised by the hold rail; not chosen | Undeclared | Dive 9 |
 | Imre | Unread-born listener, about 70, third generation on the far limb; kept the far house's bowl for forty years; matched the Hum to the region's heat and had the house shutter an answer | Unread; no rail | Dive 10 |
+| Halde | Throat-wright, about 330; turned the wheel that let the retraction through the gate as an apprentice; keeps the Wright's Silence; died and remade four times | None shown; the craft forbids it | Dive 11 |
+| Sef | Halde's apprentice wright, 31; fostered in a Glossmaker household; wants the region told what the gate does | Undeclared | Dive 11 |
 
 Unnamed: Orrin's daughter, the holdout keeper Dessa walks, and the oldest Glossmaker.
 
@@ -260,9 +262,22 @@ nearest_precedent: Jocelyn Bell Burnell, who found the first pulsar on chart pap
 links: [MYST-0009, PHYS-0002, SOC-0013, POL-0006, PLACE-0001, TECH-0007, SOC-0012]
 ```
 
+```yaml
+id: CHAR-0004
+title: Halde
+status: established
+plausibility: n/a
+summary: Throat-wright, about 330, who has tended the gate since she was an apprentice; she turned the wheel that let the retraction through 304 years ago. She has died and been remade four times and has never missed a refusal test. She asked the Narrator to witness the latest test because it carries what it sees to no rail.
+rules_and_limits: She holds no key and cannot open or seal the throat. She will not speak of the gate's working outside the craft, and she has shown no rail her own position. She is remakeable, so the craft's knowledge does not depend on her surviving, but its silence depends on her keeping it.
+consequences: Craft: as the oldest wright she decides who may witness a test and who inherits custody of the gate. Politics: she alone knows how many wrights would break the silence if she did, so her silence works as a quiet check beside the nine keys.
+story_conflict: Halde wants the gate kept out of the argument. Sef, her apprentice, wants the region told, and the region cannot be told without someone losing custody of the gate, him or her.
+nearest_precedent: Stanislav Petrov, who in 1983 judged a missile warning false and reported it as false. Petrov spoke. Halde knows the region's main argument is empty and says nothing.
+links: [ORG-0002, TECH-0008, SOC-0014, CHAR-0001, HIST-0003, TECH-0006]
+```
+
 ## Technology
 
-Seven technologies carry the plot: the road, the keys, the Correction, remaking, the Gloss, the rule that decides what the road will install, and the bowls that decide what a house can hear.
+Eight technologies carry the plot: the road, the keys, the Correction, remaking, the Gloss, the rule that decides what the road will install, the bowls that decide what a house can hear, and the test that shows the gate refusing.
 
 ```yaml
 id: TECH-0001
@@ -334,12 +349,12 @@ id: TECH-0006
 title: The Admission Rule
 status: established
 plausibility: speculative
-summary: The channel the Standard rides accepts a self-executing install from a system's parent only if the install keeps the Standard's shared layer of mind intact. An install that would dismantle the Standard is refused, whoever sends it, Sol included.
-rules_and_limits: It applies only to installs with teeth. Messages that merely ask, like the retraction, pass freely and bind no one. No relay can disable the rule, because it is part of what each relay enforces.
-consequences: The retraction had to ask, because nothing else could have passed. Its toothlessness therefore proves nothing about who sent it. The Gloss keeps the shared layer, so any relay could install it outward with full force.
-story_conflict: Sol's makers built the Standard so no one could undo it by order, and their successors found that this included themselves. In the present, release can only ask, while the Gloss can compel, which tilts the throat toward the gentler mistake.
+summary: The channel the Standard rides accepts a self-executing install from a system's parent only if the install keeps the Standard's shared layer of mind intact. An install that would dismantle the Standard is refused, whoever sends it, Sol included. The throat-wrights (ORG-0002) know the rule as the working rule of the gate they keep and test it every thousand wakings (TECH-0008); almost no one else in the region does.
+rules_and_limits: It applies only to installs with teeth. Messages that merely ask, like the retraction, pass freely and bind no one. No relay can disable the rule, because it is part of what each relay enforces. A gate that cannot judge refuses every install, so decay cannot open it. Whether a Gloss install would also force its own relay onward past a child system's keepers is not fixed in canon.
+consequences: The retraction had to ask, because nothing else could have passed. Its toothlessness therefore proves nothing about who sent it. The Gloss keeps the shared layer, so any relay could install it outward with full force. Release and the Gloss look like matching acts at the throat, since both need nine keys, but they are not: the Gloss would install in every child system it reached, while the retraction would be one more request that each child's keepers could hold, as these have.
+story_conflict: Sol's makers built the Standard so no one could undo it by order, and their successors found that this included themselves. In the present, release can only ask, while the Gloss can compel, which tilts the throat toward the gentler mistake. The few who know this keep quiet (SOC-0014).
 nearest_precedent: Entrenched clauses in constitutions, which cannot be amended away. Those protect rights from a later majority. Ours protects an error from its own authors.
-links: [HIST-0002, HIST-0003, MYST-0001, TECH-0001, TECH-0005, POL-0003]
+links: [HIST-0002, HIST-0003, MYST-0001, TECH-0001, TECH-0005, POL-0003, ORG-0002, TECH-0008, SOC-0014, MYST-0011]
 ```
 
 ```yaml
@@ -353,6 +368,19 @@ consequences: Perception: read houses have never heard the Hum, and they would n
 story_conflict: Read households who want to know what the Unread are hearing must trust an Unread report. Unread listeners who want to be believed cannot show a read mind the thing itself.
 nearest_precedent: Spam filters and audio noise gates, which drop signals judged worthless. Those judge by rules their users can read. Ours judges by a mind its users share and cannot inspect.
 links: [MYST-0009, TECH-0003, SOC-0008, SOC-0010, HIST-0002, PLACE-0001, CHAR-0003]
+```
+
+```yaml
+id: TECH-0008
+title: The Refusal Test
+status: established
+plausibility: speculative
+summary: Every thousand wakings the throat-wrights feed a sealed pattern called the blind into the gate from its solward side, as if the parent had sent it, and the gate refuses it with a single low note. The blind, and the instruction to test with it, came from solward with the Standard. A wright cuts one stroke on the gate's housing for each refusal, and no stroke has ever been missed.
+rules_and_limits: The test shows that the gate refuses the blind; it shows nothing about what the blind is (MYST-0011). A gate that cannot judge refuses everything, so the test cannot let the blind through by failing. The blind can be fed only to the gate, and no other door into a house's Correction is known. Nothing in the test needs a key, and nothing passes outward.
+consequences: Evidence: the strokes on the housing are the only physical record in the region that the gate refuses some installs, and read minds can see them but cannot interpret them without the craft. Ritual: for 160,000 years a keeper witnessed each test; since the Hold keepers come with walkers, who carry what they see to their rail, so the craft has begun asking witnesses who hold no rail, like the Narrator.
+story_conflict: A wright who wants the region told could bring a rail's witness to a test, but the note proves only that something was refused, and only the craft can say what. Halde wants the test kept as it always was, and every new witness she admits is a risk.
+nearest_precedent: The EICAR test file, a harmless string that every antivirus program must flag. EICAR is known to be harmless. The craft says the blind is a working undoing, and nobody has opened it.
+links: [TECH-0006, ORG-0002, MYST-0011, CHAR-0001, CHAR-0004, ORG-0001, SOC-0002]
 ```
 
 ### Physics
@@ -385,7 +413,7 @@ links: [MYST-0009, PHYS-0001, SOC-0013, TECH-0007, PREM-0002, CHAR-0003]
 
 ## Institutions and politics
 
-Nine keepers hold one relay, three rails fight over it, and one law decides who a person is after death.
+Nine keepers hold one relay, three rails fight over it, and one law decides who a person is after death. One craft keeps the gate and will not say what it knows.
 
 ```yaml
 id: ORG-0001
@@ -398,6 +426,19 @@ consequences: Succession is the region's most contested act, since naming an hei
 story_conflict: A keeper who would release needs every holdout to change or be succeeded. A holdout needs only one like-minded heir, or one death.
 nearest_precedent: The two-person rule for nuclear launch. That rule exists to prevent an act. Ours blocks an act that may itself be a rescue.
 links: [HIST-0004, TECH-0001, TECH-0002, SOC-0001, SOC-0002, POL-0003, HIST-0006, POL-0005, CHAR-0002, MYST-0010]
+```
+
+```yaml
+id: ORG-0002
+title: The Throat-wrights
+status: established
+plausibility: n/a
+summary: A small craft of read-house residents who keep the relay's machinery: the emitter, the press that adds the relay's mark, and the gate that decides what the road may install in the region. The craft is older than the Hold and passes by custody, not by Handing. Its members know the Admission Rule (TECH-0006) as a working rule of the gate, and almost none of them say so.
+rules_and_limits: Wrights hold no keys and cannot open or seal the throat. They cannot change the gate's rule, only keep the gate sound. Their knowledge can be stated within the Standard, so the Correction leaves it alone, and because they are remade like anyone, the same few people have held the craft for centuries. Fewer than forty wrights live in the throat house.
+consequences: Work: the 2026 engineer did not survive the change, because nothing is paid; keeping the throat is custody (SOC-0012), and tending its faces earns heat credit like any other tending. Knowledge: the region's only accurate understanding of what the road can compel sits with people bound not to share it (SOC-0014). Politics: a wright has no vote at the throat, but a rail that learned what the wrights know would gain more than any Handing could give it.
+story_conflict: Every rail would want the wrights' knowledge if it knew they had any. The wrights want the gate kept out of the argument, because once a rail learns the gate decides what can be forced, the gate itself becomes a prize.
+nearest_precedent: The stonemasons' guilds of medieval Europe, which kept their methods inside the craft. The masons guarded a livelihood. The wrights guard a fact that would decide the region's one political question.
+links: [TECH-0006, TECH-0008, SOC-0014, CHAR-0004, ORG-0001, TECH-0001, SOC-0012, MYST-0001, MYST-0011]
 ```
 
 ```yaml
@@ -480,7 +521,7 @@ links: [MYST-0009, SOC-0013, POL-0001, POL-0003, POL-0004, ORG-0001, TECH-0001, 
 
 ## Society
 
-Thirteen customs show how ordinary people live with the keys, the Correction, remaking, heat, the far exchange, and speaking to the cold.
+Fourteen customs show how ordinary people live with the keys, the Correction, remaking, heat, the far exchange, speaking to the cold, and the throat's silence.
 
 ```yaml
 id: SOC-0001
@@ -651,6 +692,19 @@ nearest_precedent: Signal fires and heliographs, which spoke with light. Those m
 links: [MYST-0009, PHYS-0002, SOC-0011, POL-0004, POL-0006, PLACE-0001, TECH-0003, CHAR-0003]
 ```
 
+```yaml
+id: SOC-0014
+title: The Wright's Silence
+status: established
+plausibility: n/a
+summary: A craft rule older than the Hold forbids wrights to speak of the gate's working outside the throat house, because knowing how the gate judges is the first thing a forger would need. Since the retraction came, the rule has kept from the region the two facts that would change the argument most: no one could have given the retraction teeth, and the Gloss could be installed outward with full force while release can only ask. Wrights keep the silence for opposite reasons.
+rules_and_limits: The silence binds only wrights. A wright who breaks it loses custody of the gate, and the craft names another. Without the refusal test a wright's word is an unmarked claim with no more standing than anyone's, and the craft controls the test. The silence cannot stop anyone else from guessing.
+consequences: Politics: release-leaning wrights keep quiet because the truth would tilt the throat toward the Gloss, and hold-leaning wrights because it empties the forgery argument, so the silence holds with no agreement on why. Belief: the region's leading argument about authenticity (MYST-0001) rests on an error the only people who could correct it will not. Kinship: a wright cannot explain to their household why they stand where they do, so wrights become strangers at home.
+story_conflict: Sef, fostered by Glossmakers, wants to speak, because the truth serves the rail that raised him. Halde wants the gate kept out of the argument, and the craft can take the gate from him the moment he speaks.
+nearest_precedent: The seal of the confessional, which binds a priest to keep what he hears. The priest protects a penitent. The wrights protect a machine, and their silence decides an argument they are not allowed to join.
+links: [ORG-0002, TECH-0006, TECH-0008, TECH-0005, POL-0003, MYST-0001, SOC-0012, CHAR-0004]
+```
+
 ## Places
 
 Two kinds of house break from the read norm: the Unread Houses, which obeyed, and the single Glossed House, which tried a third way.
@@ -696,7 +750,7 @@ links: [PREM-0002, TECH-0003, SOC-0010, HIST-0005, MYST-0003, SOC-0003]
 
 ## Open mysteries
 
-Ten questions stay open on purpose. Canon must not answer them without a deliberate decision.
+Eleven questions stay open on purpose. Canon must not answer them without a deliberate decision.
 
 ```yaml
 id: MYST-0001
@@ -705,10 +759,10 @@ status: open
 plausibility: n/a
 summary: In the region it is widely believed that only Sol could have given a retraction teeth, so its toothlessness is read as either repentance or forgery. In fact no one could have given it teeth (TECH-0006), so its form is no evidence at all. Only the marks remain, and the marks are 40,000 years old.
 rules_and_limits: No evidence available in the region can settle it. A query to Sol cannot travel the outward-only road and would take 80,000 years by any other route.
-consequences: Legal and religious positions rest on an argument that is factually wrong, and the few who know the Admission Rule have reasons to keep quiet. Any upstream relay remains a suspect.
+consequences: Legal and religious positions rest on an argument that is factually wrong. The few who know the Admission Rule, the throat-wrights, keep quiet for opposite reasons (SOC-0014). Any upstream relay remains a suspect.
 story_conflict: Believers and doubters read the same sentence and each sees proof. Whoever proves the toothlessness argument wrong damages both sides at once.
 nearest_precedent: The Donation of Constantine. That forgery was exposed by scholarship. Here scholarship can only show that the question was never answerable.
-links: [HIST-0003, TECH-0001, TECH-0006]
+links: [HIST-0003, TECH-0001, TECH-0006, ORG-0002, SOC-0014]
 ```
 
 ```yaml
@@ -828,12 +882,26 @@ nearest_precedent: The debate over false consciousness in political theory, whic
 links: [TECH-0003, MIND-0002, ORG-0001, HIST-0005, SOC-0003, SOC-0012, POL-0005, MYST-0005, CHAR-0002]
 ```
 
+```yaml
+id: MYST-0011
+title: What Is in the Blind?
+status: open
+plausibility: n/a
+summary: The blind is the sealed pattern the gate refuses in every refusal test (TECH-0008). The craft holds that it is a working install that would dismantle the Standard's shared layer, written by Sol's makers alongside the Standard so the gate could be shown to refuse it. Nobody in the region has opened it, and nobody knows why Sol would send its own undoing with the Standard rather than only the lock against it.
+rules_and_limits: The blind is held in a sealed store in the gate's housing. Opening it is no part of the craft, and nobody knows whether opening it would destroy it. Even if it is what the craft says, it cannot pass the gate, and no other door into a house's Correction is known.
+consequences: If it is an undoing, Sol wrote a retraction with teeth 160,000 years before it sent one without them, which bears on what Sol meant from the start. It would also be the one thing in the region that could end the Standard if a door were ever found, which would make the throat house the most guarded place in the region. If it is something else, the craft has tested the gate against the wrong thing for 160,000 years.
+story_conflict: Release-leaning wrights want it opened and read, and a door looked for. Halde wants it sealed, because an undoing with no door is safe and one with a door is not.
+nearest_precedent: Naval sealed orders, opened only at a set point in a voyage. Ours have no point at which they open; their only purpose is to be refused.
+links: [TECH-0008, TECH-0006, HIST-0002, HIST-0003, ORG-0002, MYST-0001, CHAR-0004]
+```
+
 ## Decision log
 
-Every stage so far, newest first. Dive 10 on 2026-11-16; all earlier stages on 2026-11-15.
+Every stage so far, newest first. Dive 11 on 2026-11-17; dive 10 on 2026-11-16; all earlier stages on 2026-11-15.
 
 | Stage | What changed | Decided by |
 | --- | --- | --- |
+| Dive 11: The relay engineers | Added ORG-0002 (the throat-wrights), TECH-0008 (the refusal test), SOC-0014 (the Wright's Silence), CHAR-0004 (Halde), MYST-0011 (what is in the blind). Revised TECH-0006 (who knows it; the gate fails closed; release only asks each child relay while the Gloss would install in every child it reached) and MYST-0001 (names who keeps quiet; not answered). Named Halde and Sef. Added a known in-world error. The Narrator witnessed the test and kept its error. No checkpoint due (2026-11-17) | Claude |
 | Author rulings on the roadmap | Claude drafts story prose for the author's revision, replacing the original rule that the author writes it. The Arrival and dives 1 to 7 scenes are to be copied into the Scenes tab word for word; not yet done, because only the original chat holds them. Build sessions must refresh canon at every start (2026-11-16) | Author |
 | Roadmap approved | Added the Roadmap tab: The Hold, then review after dive 15, then Ask the Narrator, the story cycle (flagship), and the keeper game. No canon entries changed (2026-11-16) | Claude proposed; author approved |
 | Build brief added | Added the Build brief tab for a Claude Code session: The Hold, a static web app that displays canon and never changes it. Dive runs still write no code. No canon entries changed (2026-11-16) | Author requested; Claude decided |
@@ -863,6 +931,7 @@ These are things characters believe that canon shows are false. Keep them; they 
 | Belief | Held by | Truth |
 | --- | --- | --- |
 | Only Sol could have sent a retraction with teeth | The Narrator, most of the region | No one could, because of the Admission Rule (TECH-0006) |
+| Release and the Gloss are the same kind of act at the throat | The release rail, most of the region | Release only asks each child relay, which may hold in turn; the Gloss would install in every child it reached (TECH-0006). Only the throat-wrights know, and they keep quiet (SOC-0014) |
 
 ### Scene lines that no longer match canon
 

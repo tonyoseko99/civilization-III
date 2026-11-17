@@ -48,7 +48,10 @@
       "candidates": "SOC-0001",
       "the Before": "MYST-0003",
       "Standard": "HIST-0002",
-      "Unread": "PLACE-0001"
+      "Unread": "PLACE-0001",
+      "wright": "ORG-0002",
+      "wrights": "ORG-0002",
+      "the blind": "MYST-0011"
     }
   },
 

@@ -14,6 +14,7 @@ Canon problems are not fixed here; they are listed at the end for the next dive 
 | 2026-11-16 | 5. Polish and review | Done. axe passes on ten page kinds, light and dark, desktop and phone; keyboard paths tested. Stopped for author review |
 | 2026-11-16 | Canon refresh | Done. Snapshot: Canon tab rev 39, Scenes tab rev 15. New or revised since rev 37 / rev 4: 0 entries (still 58), 0 characters, 8 scenes newly recorded (Arrival and dives 1 to 7), so all 11 scenes are recorded. 2 new Decision log rows: "Author rulings on the roadmap" and "Roadmap approved" |
 | 2026-11-16 | Deployed | Live on GitHub Pages from `main`. The author made the repo public, set `main` as default, enabled Pages, and added `main` to the `github-pages` environment after the first deploy was blocked by its branch rule. He checked the front page, a deep link on reload, and dark mode on a phone |
+| 2026-11-17 | Canon refresh | Done. Snapshot: Canon tab rev 50, Scenes tab rev 16. Since rev 39 / rev 15: 5 entries added (CHAR-0004, TECH-0008, ORG-0002, SOC-0014, MYST-0011); 2 entries revised (TECH-0006: summary, rules_and_limits, consequences, story_conflict, links; MYST-0001: consequences, links); now 63 entries; 2 Cast rows added (Halde, Sef); 1 scene newly recorded ("Dive 11: The relay engineers"); 1 new Decision log row ("Dive 11: The relay engineers"). No code change needed for the new canon |
 
 ## Decisions
 
@@ -48,12 +49,14 @@ Canon problems are not fixed here; they are listed at the end for the next dive 
 | 2026-11-16 | Added a GitHub Pages workflow (`.github/workflows/pages.yml`) after the author approved public hosting. It runs on push to `main` or by hand, runs the unit tests and the build, and deploys `dist/`. Playwright is not run there | Assumes GitHub Pages is the host he wants, since he said only "public" |
 | 2026-11-16 | Build work lands on the session branch and reaches `main` only by a deliberate merge, because `main` publishes | The public site lags canon until a build session refreshes the snapshot and merges |
 | 2026-11-16 | The snapshot refresh is now a script (`npm run refresh-snapshot`): it decodes the saved exports and checks their byte length, converts an HTML export to Markdown when needed, strips the byline under the Canon title, validates the Canon text with the importer's checks before writing anything, and reports what changed | It supports only the HTML constructs the doc uses today and fails on anything else, so a new kind of block in the Scenes tab will stop the refresh until the converter is extended |
+| 2026-11-17 | The refresh script now also accepts a saved export wrapped in a content-block array (`[{type, text}]`), which is how today's exports were saved. It takes the one block that holds the export object and fails if there are none or several | Tied to how the session harness saves large tool results. A further change of wrapper will stop the refresh, loudly, until the script is taught it |
+| 2026-11-17 | Added aliases for dive 11: "wright" and "wrights" link to ORG-0002 (The Throat-wrights), "the blind" to MYST-0011 (What Is in the Blind?). "The gate" is left unlinked, because canon ties it to both the road (TECH-0001) and the Admission Rule (TECH-0006) | "the blind" will also link if the Narrator ever uses the phrase for a window covering; the craft's own name for the pattern made it worth the risk |
 
 ## Canon notes for the next dive run
 
 Nothing below was changed in the snapshot.
 
-1. **Missing Changelog sections.** The Arrival and dives 1 to 8 have no Changelog section in the Scenes tab; dives 9 and 10 do.
+1. **Missing Changelog sections.** The Arrival and dives 1 to 8 have no Changelog section in the Scenes tab; dives 9 to 11 do.
 2. **Generations in the Unread Houses.** PLACE-0001 says speech strains "after nine generations" in houses that obeyed "nearly 300 years ago". The Cast gives Pell as 190 and second generation, and Imre as about 70 and third generation. Nine generations in 300 years does not sit easily beside a 190-year-old in the second.
 3. **"The cold house."** Dive 9's scene uses it for where Ione was raised and sleeps. PLACE-0002 calls the Glossed House "colder and poorer", but no entry gives "cold house" as a name, so the app leaves it unlinked.
 4. **"The throat."** Used throughout the scenes and in several entries (POL-0003, POL-0006, ORG-0001), and defined only in the Run book's style note. No entry defines it. The app links it to TECH-0001.
